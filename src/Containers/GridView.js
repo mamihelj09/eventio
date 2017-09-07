@@ -2,15 +2,16 @@ import React from 'react';
 import GridItem from './GridItem';
 
 const GridView = ({ allEvents, handleAttendEvent, handleUnattendEvent, user }) => (
-  <div>
+  <div className="row">
     {allEvents.length ?
-      <div className="row">
+      <div>
         {allEvents.map(item => (
           <GridItem
             key={item.id}
             title={item.title}
             description={item.description}
-            date={item.createdAt}
+            date={`${item.createdAt.slice(0, item.createdAt.indexOf('T'))}, 
+            ${item.createdAt.slice(item.createdAt.indexOf('T') + 1, item.createdAt.indexOf('T') + 6)}`}
             attendees={`${item.attendees.length} of ${item.capacity}`}
             owner={`${item.owner.firstName} ${item.owner.lastName}`}
             status={item.status}
@@ -20,7 +21,7 @@ const GridView = ({ allEvents, handleAttendEvent, handleUnattendEvent, user }) =
             user={user}
           />
         ))}
-      </div> : <h1>loading...</h1>}
+      </div> : <h1>No Items....</h1>}
   </div>
 );
 

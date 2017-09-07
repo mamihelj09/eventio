@@ -14,10 +14,10 @@ export const handleLogin = (email, password) => (dispatch) => {
   });
 };
 
-export const handleLogout = () =>
-  // localStorage.removeItem('id');
-  (
-    console.log('asdasdas')
-    //   type: 'LOGOUT_SUCCESS',
-  );
+export const handleLogout = () => {
+  localStorage.setItem('id', null);
+  return {
+    type: 'LOGOUT_SUCCESS',
+  };
+};
 

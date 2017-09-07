@@ -20,18 +20,24 @@ class EventList extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.events.allEvents.length) { this.props.fetchAllEvents(localStorage.getItem('id')); }
+    if (!this.props.events.allEvents.length) {
+      this.props.fetchAllEvents(localStorage.getItem('id'));
+    }
   }
 
   render() {
     const changeToGridView = () => {
       $('#gridView').removeClass('hidden');
       $('#listView').addClass('hidden');
+      $('#listIcon').removeClass('active');
+      $('#gridIcon').addClass('active');
     };
 
     const changeToListView = () => {
       $('#listView').removeClass('hidden');
       $('#gridView').addClass('hidden');
+      $('#gridIcon').removeClass('active');
+      $('#listIcon').addClass('active');
     };
 
     const changeFilterStatus = (status) => {
@@ -43,7 +49,7 @@ class EventList extends React.Component {
         <Navbar />
         <div className="container">
           <div className="row">
-            <FilterEventTab changeFilterStatus={changeFilterStatus} />
+            <FilterEventTab changeFilterStatus={changeFilterStatus} status={this.state.status} />
             <ChangeViewTab
               changeToGridView={changeToGridView}
               changeToListView={changeToListView}
@@ -53,7 +59,7 @@ class EventList extends React.Component {
             <GridView
               allEvents={this.state.status === 'all' ? this.props.events.allEvents :
                 this.props.events.allEvents.filter(el => (this.state.status === 'future' ?
-                  new Date(el.startsAt) < Date.now() : new Date(el.startsAt) > Date.now()))
+                  new Date(el.startsAt) > Date.now() : new Date(el.startsAt) < Date.now()))
               }
               handleAttendEvent={this.props.handleAttendEvent}
               handleUnattendEvent={this.props.handleUnattendEvent}
@@ -69,7 +75,7 @@ class EventList extends React.Component {
             <ListView
               allEvents={this.state.status === 'all' ? this.props.events.allEvents :
                 this.props.events.allEvents.filter(el => (this.state.status === 'future' ?
-                  new Date(el.startsAt) < Date.now() : new Date(el.startsAt) > Date.now()))
+                  new Date(el.startsAt) > Date.now() : new Date(el.startsAt) < Date.now()))
               }
               handleAttendEvent={this.props.handleAttendEvent}
               handleUnattendEvent={this.props.handleUnattendEvent}

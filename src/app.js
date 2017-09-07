@@ -11,20 +11,14 @@ import path from 'path';
 import PrivateRoute from './Routes/PrivateRoute';
 import Login from './Routes/Login';
 import EventList from './Routes/EventList';
-// import EventPreview from './Routes/EventPreview';
-// import Profile from './Routes/Profile';
-// import CreateEvent from './Routes/CreateEvent';
-// import EditEvent from './Routes/EditEvent';
 
 import store from './store';
+
 import './Style/app.scss';
+import './Style/_grid.scss';
+
 const Loading = () => (<h1>Loading...</h1>);
 
-// const LoadableComponentList = Loadable({
-//   loader: () => import('./Routes/EventList'),
-//   loading: Loading,
-//   serverSideRequirePath: path.join(__dirname, './Routes/EventList')
-// });
 const LoadableComponentProfile = Loadable({
   loader: () => import('./Routes/Profile'),
   loading: Loading,

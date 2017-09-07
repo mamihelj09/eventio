@@ -12,12 +12,15 @@ const EventPreview = ({ user, events, handleAttendEvent, handleUnattendEvent }) 
     <Navbar displayBack />
     <div className="container">
       <FetchEventInfo />
-      <span>DETAIL EVENT: #{events.specificEvent.id}</span>
+      <span style={{ color: '#989898', fontSize: '14px', fontWeight: '700' }}>
+        DETAIL EVENT: #{events.specificEvent.id}
+      </span>
       {events.specificEvent.id ?
         <DisplayEventInfo
           eventId={events.specificEvent.id}
           id={user.id}
-          date={events.specificEvent.createdAt}
+          date={`${events.specificEvent.createdAt.slice(0, events.specificEvent.createdAt.indexOf('T'))}, 
+          ${events.specificEvent.createdAt.slice(events.specificEvent.createdAt.indexOf('T') + 1, events.specificEvent.createdAt.indexOf('T') + 6)}`}
           title={events.specificEvent.title}
           owner={`${events.specificEvent.owner.firstName} 
             ${events.specificEvent.owner.lastName}`}
@@ -36,8 +39,8 @@ const EventPreview = ({ user, events, handleAttendEvent, handleUnattendEvent }) 
             id: user.id,
           }}
         /> : <h1>Loading...</h1>}
-      <FloatingAddButton />
     </div>
+    <FloatingAddButton />
   </div>
 );
 

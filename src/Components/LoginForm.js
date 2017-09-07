@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { handleLogin } from '../Actions/user_action';
@@ -43,7 +43,11 @@ class LoginForm extends React.Component {
               name="password"
               onChange={this.handleInput}
             />
-            <input type="submit" value="LOGIN" />
+            <span className="col col--hide">
+              Don&apos;t have account?
+              <Link to="/home">SIGN UP</Link>
+            </span>
+            <button type="submit" value="SIGN IN">SIGN IN</button>
           </form>}
       </div>
     );

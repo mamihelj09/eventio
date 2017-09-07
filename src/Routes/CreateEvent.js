@@ -9,7 +9,7 @@ const CreateEvent = ({ events }) => (
     <Navbar displayClose />
     {events.redirectToList ?
       <Redirect to="/" /> :
-      <div className="col-sm-6 col-sm-offset-3">
+      <div className="container">
         <NewEventForm />
       </div>}
   </div>

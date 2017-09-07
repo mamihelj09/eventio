@@ -21,6 +21,7 @@ export default (state = initialState, action) => {
         id: action.payload.id,
       };
     case 'LOGOUT_SUCCESS': {
+      localStorage.clear();
       return initialState;
     }
     case 'LOGIN_FAILED':

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom';
 import { handleEditEvent, dismountRedirect } from '../Actions/events_action';
@@ -31,26 +32,10 @@ class EditEventForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <EditInfoBox>
         {this.props.events.redirectToList ?
           <Redirect to="/" /> :
           <div>
-            <input
-              type="text"
-              placeholder="Title"
-              value={this.state.title}
-              name="title"
-              onChange={this.handleInput}
-            />
-            <br />
-            <input
-              type="text"
-              placeholder="Description"
-              value={this.state.description}
-              name="description"
-              onChange={this.handleInput}
-            />
-            <br />
             <input
               type="date"
               placeholder="Date"
@@ -64,6 +49,22 @@ class EditEventForm extends React.Component {
               placeholder="Time"
               value={this.state.time}
               name="time"
+              onChange={this.handleInput}
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Title"
+              value={this.state.title}
+              name="title"
+              onChange={this.handleInput}
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Description"
+              value={this.state.description}
+              name="description"
               onChange={this.handleInput}
             />
             <br />
@@ -86,10 +87,45 @@ class EditEventForm extends React.Component {
             }
             >DONE</button>
           </div>}
-      </div>
+      </EditInfoBox>
     );
   }
 }
+
+const EditInfoBox = styled.div`
+  padding: 20px;    
+  & > div{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    background:#fff;
+    padding:20px 30px!important;
+    & input{
+      font-family:'Hind';
+      display:block;
+      width:100%;
+      border:none;
+      border-bottom:1px solid #989898;
+      font-size:14px;
+      outline:none;
+      height:48px;
+      color:#313a42;
+    }
+    & button{
+      text-align:center;
+      padding: 20px; 
+      color:#fff;
+      background:#22d486;
+      border:none;
+      border-radius:5px;
+      width:70%;
+      margin:20px 15%;
+      font-size:14px;
+      &:hover{
+        cursor:pointer;
+        background:#16ad69;
+      }
+    }
+  }
+`;
 
 function mapStateToProps(state) {
   return {

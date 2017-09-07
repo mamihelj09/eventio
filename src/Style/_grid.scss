@@ -1,45 +1,11 @@
-/*-----------------------------------*\
-  $TOAST-GRID
-  An insane grid.
-  You'd be mad to use it.
-  Usage
-  =====
-  Assuming default values:
-  <div class="grid">
-    <div class="grid__col grid__col--1-of-2">
-      A half-width column.
-    </div>
-    <div class="grid__col grid__col--1-of-4 grid__col--pull-1-of-4">
-      A quarter, pulled left by its own width. You get this, right?
-    </div>
-  </div>
-  Customisation
-  =============
-  $toast-grid-namespace and $toast-grid-column-namespace
-  adjusts the class names for the grid. With
-  default values, grid wrappers have a class
-  of '.grid' and columns '.grid__col'.
-  $toast-col-groups(n) adjusts column divisions.
-  For example, $toast-col-groups(12) will produce
-  a 12-column grid. $col-groups(3,6,8)
-  will produce a 3-, 6-, and 8-column grid.
-  $toast-gutter-width is—you guessed it—the gutter
-  width. Accepts any unit.
-  That's it. Have fun.
-\*-----------------------------------*/
-
-// Namespaces
-// This stops me from being overzealous with enforcing classes
+//Modified toast-grid 
+//You can change name below
 $toast-grid-namespace: "row" !default;
 $toast-grid-column-namespace: "col" !default;
-// $col-groups are the column groups you want
-// For example, $col-groups: (3, 4, 5) will output:
-// .grid__col--n-of-3, .grid__col--n-of-4, [...]
 $toast-col-groups: (2, 3, 4, 5, 6, 8, 12) !default;
 // Gutter width
-$toast-gutter-width: 20px !default;
+$toast-gutter-width: 0px !default;
 // Breakpoints
-$toast-breakpoint-medium: 700px !default;
 $toast-breakpoint-small: 480px !default;
 // Pushes and pulls
 $toast-pushes: true !default;
@@ -47,6 +13,7 @@ $toast-pulls: true !default;
 .#{$toast-grid-namespace} {
     list-style: none;
     margin-left: -$toast-gutter-width;
+    height: 100%;
 }
 
 %span-all {
@@ -224,43 +191,25 @@ $toast-pulls: true !default;
 // All direct descendents of .grid get treated the same way.
 // This might be overkill for some, but it's a time-saver for me.
 .#{$toast-grid-column-namespace} {
+    height: 100%;
     box-sizing: border-box;
-    display: inline-block;
-    margin-right: -.25em;
+    display: inline-block; // margin-right: -.25em;
     min-height: 1px;
     padding-left: $toast-gutter-width;
     vertical-align: top;
-    @media (max-width: $toast-breakpoint-medium) {
+    @media (max-width: $toast-breakpoint-small) {
         display: block;
         margin-left: 0;
         margin-right: 0;
         width: auto;
     }
-    @media (max-width: $toast-breakpoint-medium) {
+    @media (min-width: $toast-breakpoint-small) {
         &[class*="#{$toast-grid-column-namespace}--m-"] {
             display: inline-block;
             margin-right: -.24em;
         }
-        &.#{$toast-grid-column-namespace}--m-hide {
-            display: none;
-        }
-        &.#{$toast-grid-column-namespace}--m-1-of-2 {
-            width: percentage(1/2);
-        }
-        &.#{$toast-grid-column-namespace}--m-1-of-3 {
-            width: percentage(1/3);
-        }
-        &.#{$toast-grid-column-namespace}--m-2-of-3 {
-            width: percentage(2/3);
-        }
-        &.#{$toast-grid-column-namespace}--m-1-of-4 {
-            width: percentage(1/4);
-        }
-        &.#{$toast-grid-column-namespace}--m-2-of-4 {
-            @extend .#{$toast-grid-column-namespace}--m-1-of-2;
-        }
-        &.#{$toast-grid-column-namespace}--m-3-of-4 {
-            width: percentage(3/4);
+        &.#{$toast-grid-column-namespace}--hide {
+            display: none!important
         }
     }
     @media (max-width: $toast-breakpoint-small) {
@@ -268,8 +217,14 @@ $toast-pulls: true !default;
             display: inline-block;
             margin-right: -.24em;
         }
+        &.#{$toast-grid-column-namespace}--s-hide {
+            display: none!important;
+        }
         &.#{$toast-grid-column-namespace}--s-1-of-2 {
             width: percentage(1/2);
+        }
+        &.#{$toast-grid-column-namespace}--s-2-of-2 {
+            width: percentage(2/2);
         }
         &.#{$toast-grid-column-namespace}--s-1-of-3 {
             width: percentage(1/3);
@@ -294,16 +249,6 @@ $toast-pulls: true !default;
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
-// Displays the column as the first in its row
-.#{$toast-grid-column-namespace}--d-first {
-    float: left;
-}
-
-// Displays the column as the last in its row
-.#{$toast-grid-column-namespace}--d-last {
-    float: right;
 }
 
 // Removes gutters from the columns

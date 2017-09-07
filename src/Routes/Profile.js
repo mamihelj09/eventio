@@ -14,11 +14,15 @@ const Profile = ({ user, events, handleUnattendEvent }) => {
   const changeToGridView = () => {
     $('#gridView').removeClass('hidden');
     $('#listView').addClass('hidden');
+    $('#listIcon').removeClass('active');
+    $('#gridIcon').addClass('active');
   };
 
   const changeToListView = () => {
     $('#listView').removeClass('hidden');
     $('#gridView').addClass('hidden');
+    $('#gridIcon').removeClass('active');
+    $('#listIcon').addClass('active');
   };
 
   return (
@@ -29,10 +33,10 @@ const Profile = ({ user, events, handleUnattendEvent }) => {
           name={`${user.firstName} ${user.lastName}`}
           logo={`${user.firstName[0]}${user.lastName[0]}`}
           email={user.email}
-        />
+        /> <br />
         <div className="row">
-          <div className="col-xs-6">
-            <h1>My events:</h1>
+          <div className="col--s-1-of-2 col--1-of-2 col">
+            <h2>My events</h2>
           </div>
           <ChangeViewTab
             changeToGridView={changeToGridView}
