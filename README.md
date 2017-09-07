@@ -2,6 +2,8 @@
 
 Simple app witch allows registered users to sign up for and create events. The app contains 5 pages: Login, Events List, Event Detail, Create Event, User Profile.
 
+Live demo [here](https://eventioapp.herokuapp.com/)
+
 ## Login 
 List of users:
 <table>
