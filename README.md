@@ -5,7 +5,7 @@ Simple app witch allows registered users to sign up for and create events. The a
 ## Login 
 List of users:
 | Username  | Password |
-| ------------- | ------------- |
+| :--- | :--- |
 | tonystark@eventio.com  | ir0nL0ver  |
 | steverogers@eventio.com   | am3riCa   |
 | blackwidow@eventio.com   | l0veLateX   |
