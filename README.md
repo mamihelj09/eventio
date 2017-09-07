@@ -4,12 +4,32 @@ Simple app witch allows registered users to sign up for and create events. The a
 
 ## Login 
 List of users:
-| Username                  | Password      |
-| :---                      | :---          |
-| tonystark@eventio.com     | ir0nL0ver     |
-| steverogers@eventio.com   | am3riCa       |
-| blackwidow@eventio.com    | l0veLateX     |
-| peterparker@eventio.com   | hat3Spid3rs   |
+<table>
+  <thead>
+   <tr>
+      <td>Username</td>
+      <td>Password</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>tonystark@eventio.com</td>
+      <td>ir0nL0ver</td>
+    </tr>
+    <tr>
+      <td>steverogers@eventio.com</td>
+      <td>am3riCa</td>
+    </tr>
+    <tr>
+      <td>blackwidow@eventio.com</td>
+      <td>l0veLateX</td>
+    </tr>
+    <tr>
+      <td>peterparker@eventio.com</td>
+      <td>hat3Spid3rs</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Event List
 After logging in, users is redirected to a list of all events. Each event has a brief information about its capacity and a link to more detailed information about the event (Event Detail page) as well as a button to attend the event.
